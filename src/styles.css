@@ -108,13 +108,8 @@ button {
 }
 
 .particles {
-  z-index: 9;
+  z-index: 20;
   overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-}
-
-.particles.show {
   opacity: 1;
 }
 
@@ -122,19 +117,29 @@ button {
   position: absolute;
   top: -12vh;
   opacity: 0;
-  color: rgba(255, 255, 255, 0.92);
+  color: transparent;
+  font-size: 0;
   text-shadow: 0 4px 12px rgba(129, 58, 101, 0.22);
 }
 
+.particle::before {
+  color: #e83e8c;
+  content: "\273F";
+  font-size: 30px;
+}
+
 .flower {
-  font-size: 26px;
   animation: float-flower linear infinite;
 }
 
 .glitter {
-  color: rgba(255, 220, 232, 0.9);
-  font-size: 18px;
   animation: float-glitter linear infinite;
+}
+
+.glitter::before {
+  color: #8f3d63;
+  content: "\2740";
+  font-size: 24px;
 }
 
 @keyframes float-flower {

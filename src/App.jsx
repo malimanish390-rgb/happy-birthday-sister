@@ -4,22 +4,22 @@ import { birthdayLetters, birthdayPages } from './birthdayContent';
 const floatingSymbols = ['✿', '❀', '✽', '♡'];
 const birthdayPhoto = `${import.meta.env.BASE_URL}moti-photo.png`;
 
-function FloatingParticles({ isActive }) {
+function FloatingParticles() {
   const particles = useMemo(
     () =>
-      Array.from({ length: 30 }, (_, index) => ({
+      Array.from({ length: 42 }, (_, index) => ({
         id: index,
         symbol: floatingSymbols[index % floatingSymbols.length],
         left: `${(index * 37) % 100}vw`,
-        delay: `${(index * 0.43) % 7}s`,
-        duration: `${8 + (index % 7)}s`,
+        delay: `${(index * 0.16) % 2.8}s`,
+        duration: `${7 + (index % 6)}s`,
         kind: index % 3 === 0 ? 'particle glitter' : 'particle flower',
       })),
     [],
   );
 
   return (
-    <div className={`particles ${isActive ? 'show' : ''}`} aria-hidden="true">
+    <div className="particles" aria-hidden="true">
       {particles.map((particle) => (
         <span
           className={particle.kind}
@@ -120,7 +120,7 @@ export default function App() {
         <span className="blob blob-three" />
       </div>
 
-      <FloatingParticles isActive={isLetterTyping} />
+      {isLetterTyping ? <FloatingParticles /> : null}
 
       <section className={`screen ${currentLetter ? 'hidden' : ''}`} id="home">
         <form className={`card ${isShaking ? 'shake' : ''}`} onSubmit={unlockLetter}>
