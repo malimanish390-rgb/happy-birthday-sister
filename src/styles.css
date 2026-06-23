@@ -450,6 +450,13 @@ input:focus {
   color: #2a2438;
 }
 
+.letter-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 210px);
+  gap: clamp(20px, 5vw, 34px);
+  align-items: start;
+}
+
 .letter-text {
   margin: 0;
   white-space: pre-wrap;
@@ -458,6 +465,16 @@ input:focus {
   font-size: clamp(1.05rem, 3.5vw, 1.18rem);
   font-style: italic;
   line-height: 2;
+}
+
+.letter-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 18px 34px rgba(42, 36, 56, 0.14);
+  object-fit: contain;
 }
 
 .letter-text::after {
@@ -511,5 +528,15 @@ input:focus {
 
   .paper {
     max-height: 86vh;
+  }
+
+  .letter-body {
+    grid-template-columns: 1fr;
+  }
+
+  .letter-photo {
+    grid-row: 1;
+    width: min(180px, 72vw);
+    margin: 0 auto 6px;
   }
 }

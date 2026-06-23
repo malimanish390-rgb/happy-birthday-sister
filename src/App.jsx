@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { birthdayLetters, birthdayPages } from './birthdayContent';
 
 const floatingSymbols = ['*', '+', '.', 'x'];
+const birthdayPhoto = `${import.meta.env.BASE_URL}moti-photo.png`;
 
 function FloatingParticles() {
   const particles = useMemo(
@@ -170,9 +171,12 @@ export default function App() {
               ? `${birthdayPages.letterPopup.titlePrefix} ${currentLetter.name}`
               : ''}
           </h2>
-          <p className={`letter-text ${typedText === currentLetter?.message ? 'finished' : ''}`}>
-            {typedText}
-          </p>
+          <div className="letter-body">
+            <p className={`letter-text ${typedText === currentLetter?.message ? 'finished' : ''}`}>
+              {typedText}
+            </p>
+            <img className="letter-photo" src={birthdayPhoto} alt="Moti" />
+          </div>
         </article>
       </div>
     </main>
