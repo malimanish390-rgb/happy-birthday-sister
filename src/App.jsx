@@ -9,11 +9,11 @@ function FloatingParticles() {
     () =>
       Array.from({ length: 42 }, (_, index) => ({
         id: index,
-        symbol: floatingSymbols[index % floatingSymbols.length],
+        symbol: index % 4 === 0 ? '\u2665' : index % 3 === 0 ? '\u2740' : index % 2 === 0 ? '\u273F' : '\u273D',
         left: `${(index * 37) % 100}vw`,
         delay: `${(index * 0.16) % 2.8}s`,
         duration: `${7 + (index % 6)}s`,
-        kind: index % 3 === 0 ? 'particle glitter' : 'particle flower',
+        kind: index % 4 === 0 ? 'particle heart' : index % 3 === 0 ? 'particle glitter' : 'particle flower',
       })),
     [],
   );
@@ -44,6 +44,7 @@ export default function App() {
   const [isShaking, setIsShaking] = useState(false);
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCelebrating, setIsCelebrating] = useState(false);
   const [typedText, setTypedText] = useState('');
   const typingTimer = useRef(null);
 
@@ -99,18 +100,18 @@ export default function App() {
   }
 
   function openLetter() {
+    setIsCelebrating(true);
     setIsEnvelopeOpen(true);
     window.setTimeout(() => setIsModalOpen(true), 650);
   }
 
   function closeLetter() {
     window.clearTimeout(typingTimer.current);
+    setIsCelebrating(false);
     setIsModalOpen(false);
     setTypedText('');
     window.setTimeout(() => setIsEnvelopeOpen(false), 350);
   }
-
-  const isLetterTyping = isModalOpen && currentLetter && typedText !== currentLetter.message;
 
   return (
     <main className="page">
@@ -120,7 +121,7 @@ export default function App() {
         <span className="blob blob-three" />
       </div>
 
-      {isLetterTyping ? <FloatingParticles /> : null}
+      {isCelebrating ? <FloatingParticles /> : null}
 
       <section className={`screen ${currentLetter ? 'hidden' : ''}`} id="home">
         <form className={`card ${isShaking ? 'shake' : ''}`} onSubmit={unlockLetter}>

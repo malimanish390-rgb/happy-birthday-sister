@@ -117,29 +117,38 @@ button {
   position: absolute;
   top: -12vh;
   opacity: 0;
-  color: transparent;
-  font-size: 0;
+  color: #e83e8c;
+  font-size: 30px;
   text-shadow: 0 4px 12px rgba(129, 58, 101, 0.22);
 }
 
 .particle::before {
-  color: #e83e8c;
-  content: "\273F";
-  font-size: 30px;
+  content: none;
 }
 
 .flower {
+  color: #e83e8c;
   animation: float-flower linear infinite;
 }
 
 .glitter {
+  color: #8f3d63;
+  font-size: 24px;
   animation: float-glitter linear infinite;
 }
 
 .glitter::before {
-  color: #8f3d63;
-  content: "\2740";
-  font-size: 24px;
+  content: none;
+}
+
+.heart {
+  color: #e31b4f;
+  font-size: 30px;
+  animation: float-heart linear infinite;
+}
+
+.heart::before {
+  content: none;
 }
 
 @keyframes float-flower {
@@ -159,6 +168,27 @@ button {
   100% {
     opacity: 0;
     transform: translateY(122vh) translateX(42px) rotate(360deg) scale(0.92);
+  }
+}
+
+@keyframes float-heart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.72);
+  }
+
+  14%,
+  88% {
+    opacity: 0.92;
+  }
+
+  50% {
+    transform: translateY(56vh) translateX(30px) rotate(18deg) scale(1.08);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(122vh) translateX(-28px) rotate(-18deg) scale(0.9);
   }
 }
 
