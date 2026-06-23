@@ -27,7 +27,7 @@ export const birthdayPages = {
 // Example: if the key is "sister", typing sister unlocks that letter.
 export const birthdayLetters = {
   moti: {
-    name: 'Moti',
+    name: 'Rohit',
     theme: {
       backgroundOne: '#e8a7a1',
       backgroundTwo: '#fceeed',
