@@ -3,9 +3,9 @@
 
 export const birthdayPages = {
   homePage: {
-    smallLabel: 'For my sister',
+    //smallLabel: 'For my sister',
     title: 'Happy Birthday',
-    subtitle: 'Answer one simple question to unlock your birthday letter.',
+    //subtitle: 'Answer one simple question to unlock your birthday letter.',
     inputPlaceholder: 'By what name do I call you the most?',
     unlockButton: 'Unlock',
     wrongAnswer: "Hmm... I don't usually call you that.",
