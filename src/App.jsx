@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { birthdayLetters, birthdayPages } from './birthdayContent';
 
-const floatingSymbols = ['*', '+', '.', 'x'];
+const floatingSymbols = ['✿', '❀', '✽', '♡'];
 const birthdayPhoto = `${import.meta.env.BASE_URL}moti-photo.png`;
 
-function FloatingParticles() {
+function FloatingParticles({ isActive }) {
   const particles = useMemo(
     () =>
       Array.from({ length: 30 }, (_, index) => ({
@@ -12,14 +12,14 @@ function FloatingParticles() {
         symbol: floatingSymbols[index % floatingSymbols.length],
         left: `${(index * 37) % 100}vw`,
         delay: `${(index * 0.43) % 7}s`,
-        duration: `${7 + (index % 6)}s`,
+        duration: `${8 + (index % 7)}s`,
         kind: index % 3 === 0 ? 'particle glitter' : 'particle flower',
       })),
     [],
   );
 
   return (
-    <div className="particles" aria-hidden="true">
+    <div className={`particles ${isActive ? 'show' : ''}`} aria-hidden="true">
       {particles.map((particle) => (
         <span
           className={particle.kind}
@@ -110,6 +110,8 @@ export default function App() {
     window.setTimeout(() => setIsEnvelopeOpen(false), 350);
   }
 
+  const isLetterTyping = isModalOpen && currentLetter && typedText !== currentLetter.message;
+
   return (
     <main className="page">
       <div className="bg-blobs" aria-hidden="true">
@@ -118,7 +120,7 @@ export default function App() {
         <span className="blob blob-three" />
       </div>
 
-      <FloatingParticles />
+      <FloatingParticles isActive={isLetterTyping} />
 
       <section className={`screen ${currentLetter ? 'hidden' : ''}`} id="home">
         <form className={`card ${isShaking ? 'shake' : ''}`} onSubmit={unlockLetter}>

@@ -110,46 +110,57 @@ button {
 .particles {
   z-index: 9;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.particles.show {
+  opacity: 1;
 }
 
 .particle {
   position: absolute;
-  top: 110vh;
+  top: -12vh;
   opacity: 0;
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 4px 10px rgba(52, 39, 73, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 4px 12px rgba(129, 58, 101, 0.22);
 }
 
 .flower {
-  font-size: 24px;
+  font-size: 26px;
   animation: float-flower linear infinite;
 }
 
 .glitter {
-  font-size: 16px;
+  color: rgba(255, 220, 232, 0.9);
+  font-size: 18px;
   animation: float-glitter linear infinite;
 }
 
 @keyframes float-flower {
   0% {
     opacity: 0;
-    transform: translateY(0) translateX(0) rotate(0deg);
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
   }
 
   12% {
     opacity: 0.8;
   }
 
+  50% {
+    transform: translateY(58vh) translateX(-28px) rotate(180deg) scale(1);
+  }
+
   100% {
     opacity: 0;
-    transform: translateY(-120vh) translateX(34px) rotate(360deg);
+    transform: translateY(122vh) translateX(42px) rotate(360deg) scale(0.92);
   }
 }
 
 @keyframes float-glitter {
   0% {
     opacity: 0;
-    transform: translateY(0) scale(0.7);
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.7);
   }
 
   18%,
@@ -157,9 +168,13 @@ button {
     opacity: 0.86;
   }
 
+  50% {
+    transform: translateY(55vh) translateX(24px) rotate(-160deg) scale(1.05);
+  }
+
   100% {
     opacity: 0;
-    transform: translateY(-120vh) translateX(-24px) scale(1.2);
+    transform: translateY(122vh) translateX(-34px) rotate(-320deg) scale(0.9);
   }
 }
 
